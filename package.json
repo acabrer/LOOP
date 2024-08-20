@@ -1,0 +1,19 @@
+{
+  "name": "loop-platform",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "music",
+    "blockchain"
+  ],
+  "author": "acabrer",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.8"
+  }
+}
