@@ -25,12 +25,14 @@ function Header() {
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
       setFile(e.target.files[0]);
+      console.log('File selected:', e.target.files[0].name); // Debug log
     }
   };
 
   const handleUpload = () => {
     console.log('Uploading:', { file, description, tags });
     setIsUploadOpen(false);
+    console.log('Is upload open after setting to false:', isUploadOpen); // Debug log
     // Reset form
     setFile(null);
     setDescription('');
@@ -45,7 +47,10 @@ function Header() {
         <input type="text" placeholder="What sound are you looking for?" />
       </div>
       <div className="user-menu-container" ref={dropdownRef}>
-        <Button onClick={() => setIsUploadOpen(true)} className="upload-button">
+        <Button onClick={() => {
+          console.log('Upload button clicked'); // Debug log
+          setIsUploadOpen(true);
+        }} className="upload-button">
           <Upload size={18} />
           Upload
         </Button>
@@ -63,8 +68,8 @@ function Header() {
           </div>
         )}
       </div>
-
       <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
+        {console.log('Dialog open state:', isUploadOpen)} {/* Debug log */}
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Upload New Content</DialogTitle>
@@ -76,17 +81,17 @@ function Header() {
             </div>
             <div className="form-group">
               <Label htmlFor="description">Description</Label>
-              <Textarea 
-                id="description" 
+              <Textarea
+                id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="form-group">
               <Label htmlFor="tags">Tags</Label>
-              <Input 
-                id="tags" 
-                placeholder="e.g. rock, kick drum, 123bpm" 
+              <Input
+                id="tags"
+                placeholder="e.g. rock, kick drum, 123bpm"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
               />
