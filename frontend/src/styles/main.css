@@ -66,6 +66,9 @@ body, html {
 
 .user-menu-container {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .user-menu {
@@ -368,4 +371,44 @@ body, html {
 
 .table-row > span:not(.song-info):not(.action-buttons) {
   text-align: center;
+}
+
+
+/* Upload button styles */
+.upload-button {
+  background-color: var(--card-background); /* Keep this the same */
+  border-radius: 50px; /* Keep this the same */
+  padding: 0.5rem 1rem; /* Adjust padding to match the User button */
+  cursor: pointer; /* Keep this the same */
+  display: flex; /* Keep this the same */
+  align-items: center; /* Keep this the same */
+  transition: background-color 0.3s ease; /* Keep this the same */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Add border similar to the User button */
+  box-shadow: none; /* Add this to remove any default shadow */
+  color: white;
+}
+
+.upload-button svg {
+  margin-right: 0.25rem; /* Adjust margin to match the User button */
+  width: 16px; /* Adjust SVG icon size if necessary */
+  height: 16px; /* Adjust SVG icon size if necessary */
+}
+
+.upload-form {
+  display: flex; /* Keep this the same */
+  flex-direction: column; /* Keep this the same */
+  gap: 1rem; /* Keep this the same */
+}
+
+.form-group {
+  display: flex; /* Keep this the same */
+  flex-direction: column; /* Keep this the same */
+}
+
+.form-group label {
+  margin-bottom: 0.5rem; /* Keep this the same */
+}
+
+.upload-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Changes background color on hover */
 }
