@@ -5,6 +5,7 @@ import Sidebar from './components/layout/Sidebar';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import MainContent from './pages/MainContent';
+import UploadButton from './components/UploadButton';
 
 function App() {
   return (
