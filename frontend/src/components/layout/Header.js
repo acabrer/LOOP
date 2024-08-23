@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, User, ChevronDown, Upload } from 'lucide-react';
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, Input, Textarea, Label } from '../common';
+import { Link } from 'react-router-dom'; // Make sure to import this
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -61,10 +62,10 @@ function Header() {
         </div>
         {isDropdownOpen && (
           <div className="user-dropdown">
-            <a href="/live">Start Live Web</a>
-            <a href="/upload">Your Library Upload</a>
-            <a href="/analysis">Data Analysis</a>
-            <a href="/settings">Settings</a>
+            <Link to="/live-session">Start Live Session</Link>
+            <Link to="/upload">Your Library Upload</Link>
+            <Link to="/analysis">Data Insights</Link>
+            <Link to="/settings">Settings</Link>
           </div>
         )}
       </div>
