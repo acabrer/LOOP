@@ -52,7 +52,7 @@ const DialogContent = React.forwardRef(function DialogContent(props, ref) {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          zIndex: 2001,
+          zIndex: 2001, // this is a hack to ensure the dialog is above the overlay should be in css styles file 
           visibility: 'visible',
           opacity: 1,
         }}
