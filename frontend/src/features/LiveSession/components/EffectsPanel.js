@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLiveSession } from '../context/LiveSessionContext';
 import { Button } from '../../../components/common'; // Adjust the import path as needed
+import styles from './LiveSession.module.css';
 
 const EffectsPanel = ({ trackIndex }) => {
   const { tracks, setTrackEffect } = useLiveSession();
@@ -36,12 +37,12 @@ const EffectsPanel = ({ trackIndex }) => {
   }, [trackIndex, setTrackEffect]);
 
   return (
-    <div className="effects-panel">
-      <h3>Track {trackIndex + 1} Effects</h3>
+    <div className={styles['effects-panel']}>
+      <h3 className={styles['effects-title']}>Track {trackIndex + 1} Effects</h3>
       
-      <div className="effect-section">
-        <h4>Reverb</h4>
-        <label>
+      <div className={styles['effect-section']}>
+        <h4 className={styles['effect-name']}>Reverb</h4>
+        <label className={styles['effect-control']}>
           <input
             type="checkbox"
             checked={reverbEnabled}
@@ -52,7 +53,7 @@ const EffectsPanel = ({ trackIndex }) => {
           />
           Enable Reverb
         </label>
-        <label>
+        <label className={styles['effect-control']}>
           Amount:
           <input
             type="range"

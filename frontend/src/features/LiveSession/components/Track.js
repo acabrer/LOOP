@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useLiveSession } from '../context/LiveSessionContext';
-import { Button } from '../../../components/common'; // Adjust the import path as needed
+import { Button } from '../../../components/common';
 import LoopBrowser from './LoopBrowser';
 import EffectsPanel from './EffectsPanel';
+import styles from './LiveSession.module.css';
 
 const Track = ({ index }) => {
   const { 
@@ -14,6 +15,7 @@ const Track = ({ index }) => {
   } = useLiveSession();
   
   const [isLoopBrowserOpen, setIsLoopBrowserOpen] = useState(false);
+  const [isEffectsPanelOpen, setIsEffectsPanelOpen] = useState(false);
   
   const track = tracks[index];
 
@@ -25,25 +27,26 @@ const Track = ({ index }) => {
     setTrackPan(index, parseFloat(e.target.value));
   };
 
-  const [isEffectsPanelOpen, setIsEffectsPanelOpen] = useState(false);
-
   return (
-    <div className="track">
-      <div className="track-header">
+    <div className={styles.track}>
+      <div className={styles['track-header']}>
         <Button 
           onClick={() => track.isPlaying ? stopTrack(index) : playTrack(index)}
-          className={`play-button ${track.isPlaying ? 'playing' : ''}`}
+          className={`${styles['play-button']} ${track.isPlaying ? styles.playing : ''}`}
         >
           {track.isPlaying ? 'Stop' : 'Play'}
         </Button>
-        <span className="track-name">Track {index + 1}</span>
+        <span className={styles['track-name']}>Track {index + 1}</span>
       </div>
       
-      <div className="loop-info">
+      <div className={styles['loop-info']}>
         {track.loop ? track.loop.name : 'No loop selected'}
       </div>
       
-      <Button onClick={() => setIsLoopBrowserOpen(true)} className="select-loop-button">
+      <Button 
+        onClick={() => setIsLoopBrowserOpen(true)} 
+        className={styles['select-loop-button']}
+      >
         Select Loop
       </Button>
       
@@ -54,7 +57,10 @@ const Track = ({ index }) => {
         />
       )}
       
-      <Button onClick={() => setIsEffectsPanelOpen(!isEffectsPanelOpen)} className="effects-button">
+      <Button 
+        onClick={() => setIsEffectsPanelOpen(!isEffectsPanelOpen)} 
+        className={styles['effects-button']}
+      >
         {isEffectsPanelOpen ? 'Close Effects' : 'Open Effects'}
       </Button>
       
@@ -62,8 +68,8 @@ const Track = ({ index }) => {
         <EffectsPanel trackIndex={index} />
       )}
       
-      <div className="track-controls">
-        <label className="volume-control">
+      <div className={styles['track-controls']}>
+        <label className={styles['volume-control']}>
           Volume:
           <input
             type="range"
@@ -75,7 +81,7 @@ const Track = ({ index }) => {
           />
         </label>
         
-        <label className="pan-control">
+        <label className={styles['pan-control']}>
           Pan:
           <input
             type="range"
