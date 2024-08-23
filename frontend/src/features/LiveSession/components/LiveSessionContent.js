@@ -2,17 +2,18 @@ import React from 'react';
 import { useLiveSession } from '../context/LiveSessionContext';
 import Track from './Track';
 import MixerPanel from './MixerPanel';
-import { Button } from '../../../components/common'; // Adjust the import path as needed
+import { Button } from '../../../components/common';
+import styles from './LiveSession.module.css';
 
 const LiveSessionContent = () => {
   const { tracks, bpm, setBpm } = useLiveSession();
 
   return (
-    <div className="live-session-content">
-      <h1>Live Session</h1>
+    <div className={styles['live-session-content']}>
+      <h1 className={styles['session-title']}>Live Session</h1>
       
-      <div className="global-controls">
-        <label className="bpm-control">
+      <div className={styles['global-controls']}>
+        <label className={styles['bpm-control']}>
           BPM:
           <input
             type="number"
@@ -22,10 +23,10 @@ const LiveSessionContent = () => {
             max="200"
           />
         </label>
-        <Button className="start-session-button">Start Session</Button>
+        <Button className={styles['start-session-button']}>Start Session</Button>
       </div>
 
-      <div className="tracks-container">
+      <div className={styles['tracks-container']}>
         {tracks.map((_, index) => (
           <Track key={index} index={index} />
         ))}
@@ -33,9 +34,9 @@ const LiveSessionContent = () => {
 
       <MixerPanel />
 
-      <div className="session-controls">
-        <Button className="save-session-button">Save Session</Button>
-        <Button className="export-session-button">Export Session</Button>
+      <div className={styles['session-controls']}>
+        <Button className={styles['save-session-button']}>Save Session</Button>
+        <Button className={styles['export-session-button']}>Export Session</Button>
       </div>
     </div>
   );

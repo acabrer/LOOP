@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLiveSession } from '../context/LiveSessionContext';
+import styles from './LiveSession.module.css';
 
 const MixerPanel = () => {
   const { 
@@ -23,9 +24,9 @@ const MixerPanel = () => {
   };
 
   return (
-    <div className="mixer-panel">
-      <h2>Mixer</h2>
-      <div className="master-volume">
+    <div className={styles['mixer-panel']}>
+      <h2 className={styles['mixer-title']}>Mixer</h2>
+      <div className={styles['master-volume']}>
         <label>
           Master Volume:
           <input
@@ -38,12 +39,12 @@ const MixerPanel = () => {
           />
         </label>
       </div>
-      <div className="tracks-mixer">
+      <div className={styles['tracks-mixer']}>
         {tracks.map((track, index) => (
-          <div key={index} className="track-mixer">
-            <div className="track-name">Track {index + 1}</div>
-            <div className="track-controls">
-              <label className="volume-control">
+          <div key={index} className={styles['track-mixer']}>
+            <div className={styles['track-name']}>Track {index + 1}</div>
+            <div className={styles['track-controls']}>
+              <label className={styles['volume-control']}>
                 Volume:
                 <input
                   type="range"
@@ -54,7 +55,7 @@ const MixerPanel = () => {
                   onChange={(e) => handleTrackVolumeChange(index, e)}
                 />
               </label>
-              <label className="pan-control">
+              <label className={styles['pan-control']}>
                 Pan:
                 <input
                   type="range"
@@ -66,10 +67,9 @@ const MixerPanel = () => {
                 />
               </label>
             </div>
-            <div className="track-meter">
-              {/* Placeholder for volume meter */}
+            <div className={styles['track-meter']}>
               <div 
-                className="meter-fill" 
+                className={styles['meter-fill']} 
                 style={{height: `${track.volume * 100}%`}}
               ></div>
             </div>

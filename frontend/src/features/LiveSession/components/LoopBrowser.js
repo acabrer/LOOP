@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLiveSession } from '../context/LiveSessionContext';
 import { Button } from '../../../components/common'; // Adjust the import path as needed
+import styles from './LiveSession.module.css';
 
 const LoopBrowser = ({ trackIndex, onClose }) => {
   const { setLoop } = useLiveSession();
@@ -77,29 +78,29 @@ const LoopBrowser = ({ trackIndex, onClose }) => {
   }, [previewAudio]);
 
   return (
-    <div className="loop-browser">
-      <h2>Select a Loop</h2>
-      <div className="loop-browser-controls">
+    <div className={styles['loop-browser']}>
+      <h2 className={styles['loop-browser-title']}>Select a Loop</h2>
+      <div className={styles['loop-browser-controls']}>
         <input
           type="text"
           placeholder="Search loops..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="loop-search"
+          className={styles['loop-search']}
         />
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="category-select"
+          className={styles['category-select']}
         >
           {categories.map(category => (
             <option key={category} value={category}>{category}</option>
           ))}
         </select>
       </div>
-      <div className="loop-list">
+      <div className={styles['loop-list']}>
         {filteredLoops.map(loop => (
-          <div key={loop.id} className="loop-item">
+          <div key={loop.id} className={styles['loop-item']}>
             <span>{loop.name}</span>
             <span>{loop.category}</span>
             <span>{loop.bpm} BPM</span>
@@ -110,7 +111,7 @@ const LoopBrowser = ({ trackIndex, onClose }) => {
           </div>
         ))}
       </div>
-      <Button onClick={onClose} className="close-button">Close</Button>
+      <Button onClick={onClose} className={styles['close-button']}>Close</Button>
     </div>
   );
 };
